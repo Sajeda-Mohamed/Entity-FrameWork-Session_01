@@ -12,10 +12,21 @@ namespace Entity_FrameWork_Session_01.Entities
     internal class Student
     {
         public int Id { get; set; }
-        
+        [Required]
+        [Column(TypeName = "varchar")]
+        [StringLength(20, MinimumLength = 3)]
         public string FName { get; set; }
-        public string? LName { get; set; }
-        public string? Address {  get; set; }
+        [Required]
+        [Column(TypeName = "varchar")]
+        [StringLength(20, MinimumLength = 3)]
+        public string LName { get; set; }
+        [Required]
+        [Column(TypeName = "varchar")]
+        //[StringLength(20, MinimumLength = 3)]
+        [MaxLength(30)]
+        public string Address {  get; set; }
+        [Required]
+        [Range (18,50)]
         public int Age { get; set; }
         public int Dept_Id {  get; set; }
     }

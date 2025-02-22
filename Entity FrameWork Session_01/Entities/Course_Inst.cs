@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Entity_FrameWork_Session_01.Entities
 {
     internal class Course_Inst
-    {  
+    {
         public int Inst_Id { get; set; }
         public int Course_Id { get; set; }
         [Required] 

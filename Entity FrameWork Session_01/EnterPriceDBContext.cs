@@ -12,7 +12,7 @@ namespace Entity_FrameWork_Session_01
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = . ; DataBase = ITI ; Trusted Connection = true");
+            optionsBuilder.UseSqlServer("Server = . ; DataBase = ITI ; Trusted_Connection = true; TrustServerCertificate = true;");
         }
         public DbSet<Student> Students { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -24,12 +24,10 @@ namespace Entity_FrameWork_Session_01
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Composite Primary Key Configuration
             modelBuilder.Entity<Stud_Course>()
                 .HasKey(sc => new { sc.Stud_Id, sc.Course_Id });
             modelBuilder.Entity<Course_Inst>()
                .HasKey(sc => new { sc.Inst_Id, sc.Course_Id });
-
             base.OnModelCreating(modelBuilder);
         }
     }

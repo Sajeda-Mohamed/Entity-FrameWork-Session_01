@@ -28,6 +28,7 @@ namespace Entity_FrameWork_Session_01.Entities
         [Required]
         [Range (18,50)]
         public int Age { get; set; }
-        public int Dept_Id {  get; set; }
+        //[Required]
+        //public int Dept_Id { get; set; }
     }
 }

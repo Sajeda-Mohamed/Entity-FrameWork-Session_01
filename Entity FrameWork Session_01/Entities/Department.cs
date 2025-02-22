@@ -15,8 +15,8 @@ namespace Entity_FrameWork_Session_01.Entities
         [Column(TypeName = "varchar")]
         [MaxLength(20)]
         public string Name { get; set; }
-        [Required]
-        public int Ins_Id { get; set; }
+        //[Required]
+        //public int Ins_Id { get; set; }
         [Required]
         [Column(TypeName = "Date")]
         public DateOnly HiringDate { get; set; }

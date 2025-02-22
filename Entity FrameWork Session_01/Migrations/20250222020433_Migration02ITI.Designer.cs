@@ -4,6 +4,7 @@ using Entity_FrameWork_Session_01;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entity_FrameWork_Session_01.Migrations
 {
     [DbContext(typeof(EnterPriceDBContext))]
-    partial class EnterPriceDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250222020433_Migration02ITI")]
+    partial class Migration02ITI
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +27,11 @@ namespace Entity_FrameWork_Session_01.Migrations
 
             modelBuilder.Entity("Entity_FrameWork_Session_01.Entities.Course", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Top_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Top_Id"));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -36,12 +39,15 @@ namespace Entity_FrameWork_Session_01.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar");
 
-                    b.HasKey("Id");
+                    b.HasKey("Top_Id");
 
                     b.ToTable("Courses");
                 });
@@ -65,32 +71,35 @@ namespace Entity_FrameWork_Session_01.Migrations
 
             modelBuilder.Entity("Entity_FrameWork_Session_01.Entities.Department", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Ins_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Ins_Id"));
 
                     b.Property<DateOnly>("HiringDate")
                         .HasColumnType("Date");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar");
 
-                    b.HasKey("Id");
+                    b.HasKey("Ins_Id");
 
                     b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("Entity_FrameWork_Session_01.Entities.Instructor", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Dept_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Dept_Id"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -103,6 +112,9 @@ namespace Entity_FrameWork_Session_01.Migrations
                     b.Property<float>("HourRate")
                         .HasColumnType("real");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -111,7 +123,7 @@ namespace Entity_FrameWork_Session_01.Migrations
                     b.Property<decimal>("Salary")
                         .HasColumnType("money");
 
-                    b.HasKey("Id");
+                    b.HasKey("Dept_Id");
 
                     b.ToTable("Instructors");
                 });
@@ -135,11 +147,11 @@ namespace Entity_FrameWork_Session_01.Migrations
 
             modelBuilder.Entity("Entity_FrameWork_Session_01.Entities.Student", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Dept_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Dept_Id"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -154,12 +166,15 @@ namespace Entity_FrameWork_Session_01.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.Property<string>("LName")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar");
 
-                    b.HasKey("Id");
+                    b.HasKey("Dept_Id");
 
                     b.ToTable("Students");
                 });

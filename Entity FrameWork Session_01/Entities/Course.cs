@@ -18,7 +18,7 @@ namespace Entity_FrameWork_Session_01.Entities
         [Required]
         public int Duration { get; set; }
         public string? Description { get; set; }
-        [Required]
-        public int Top_Id {  get; set; }
+        //[Required]
+        //public int Top_Id { get; set; }
     }
 }
